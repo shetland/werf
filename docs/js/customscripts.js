@@ -156,7 +156,7 @@ $(document).ready(function () {
 
 // Update github counters
 $(document).ready(function () {
-  $.get("https://api.github.com/repos/flant/werf", function (data) {
+  $.get("https://api.github.com/repos/werf/werf", function (data) {
     $(".gh_counter").each(function (index) {
       $(this).text(data.stargazers_count)
     });
@@ -168,7 +168,7 @@ $(document).ready(function () {
 $(document).ready(function () {
   $('[data-roadmap-step]').each(function (index) {
     var $step = $(this);
-    $.get('https://api.github.com/repos/flant/werf/issues/' + $step.data('roadmap-step'), function (data) {
+    $.get('https://api.github.com/repos/werf/werf/issues/' + $step.data('roadmap-step'), function (data) {
       if (data.state === 'closed') {
         $step.addClass('roadmap__steps-list-item_closed');
       }
