@@ -29,6 +29,8 @@ assets_generator_chosen: "webpack"
 
 ![](/images/applications-guide/gitlab-rails/020-basic-process-overview.png)
 
+<a name="building" />
+
 ## Сборка
 
 В этой главе мы научимся писать конфигурацию сборки, отлаживать её в случае ошибок и загружать полученный образ в Registry.
@@ -246,6 +248,8 @@ $ werf run --stages-storage :local --docker-options="-d -p 3000:3000 --restart=a
 
 Если вы всё правильно сделали — вы увидите собранный образ в registry. При использовании registry от gitlab — собранный образ можно увидеть через веб-интерфейс GitLab.
 
+<a name="config-iac" />
+
 ## Конфигурирование инфраструктуры в виде кода
 
 Для того, чтобы приложение заработало в Kubernetes — необходимо описать инфраструктуру приложения как код, т.е. в нашем случае объекты kubernetes: Pod, Service и Ingress.
@@ -253,6 +257,8 @@ $ werf run --stages-storage :local --docker-options="-d -p 3000:3000 --restart=a
 Конфигурацию для Kubernetes нужно шаблонизировать. Один из популярных инструментов для такой шаблонизации — это Helm, и движок Helm-а встроен в Werf. Помимо этого, werf предоставляет возможности работы с секретными значениями, а также дополнительные Go-шаблоны для интеграции собранных образов.
 
 В этой главе мы научимся описывать helm-шаблоны, используя возможности werf, а также освоим встроенные инструменты отладки. 
+
+<a name="iac-configs-making" />
 
 ### Составление конфигов инфраструктуры
 
@@ -541,6 +547,8 @@ rails:
 ```
 {% endsnippetcut %}
 
+<a name="iac-debug-deploy" />
+
 ### Отладка конфигов инфраструктуры и деплой в Kubernetes
 
 После того, как написана основная часть конфигов — хочется проверить корректность конфигов и задеплоить их в kubernetes. Для того, чтобы отрендерить конфиги инфраструктуры нужны сведения об окружении, на который будет произведён деплой, ключ для расшифровки секретных значений и т.п.
@@ -592,7 +600,9 @@ example-1   stage.myrailsapp.io                                       80      6m
 
 TODO: ОБЯЗАТЕЛЬНО нужно показать как оно работает в браузере. "Задеплоено" — это не критерий работы.
 
-# Построение CI-процесса
+<a name="ci" />
+
+## Построение CI-процесса
 
 После того, как мы разобрались, как делать сборку и деплой "вручную" — пора автоматизировать процесс.
 
@@ -678,7 +688,9 @@ export WERF_LOG_TERMINAL_WIDTH="95"
 Подробную информацию о конфигурации ci-env можно найти [тут](https://werf.io/documentation/reference/plugging_into_cicd/overview.html). Если вы используете GitLab CI/CD совместно с внешним docker registry (harbor, Docker Registry, Quay etc.), то в команду билда и пуша нужно добавлять его полный адрес (включая путь внутри registry), как это сделать можно узнать [тут](https://werf.io/documentation/cli/main/build_and_publish.html). И так же не забыть первой командой выполнить [docker login](https://docs.docker.com/engine/reference/commandline/login/).
 {% endofftopic %}
 
-## Сборка в Gitlab CI
+<a name="ci-building" />
+
+### Сборка в Gitlab CI
 
 Пропишем подробнее в стадии сборки уже знакомую команду сборки:
 
@@ -697,7 +709,9 @@ TODO: здесь и в следующих CI-стейджах разобрать
 
 ![alt_text](/images/applications-guide/gitlab-rails/3.png "image_tooltip")
 
-## Деплой в Gitlab CI
+<a name="ci-deploy" />
+
+### Деплой в Gitlab CI
 
 Опишем деплой приложения в Kubernetes. Деплой будет осуществляться на два стенда: staging и production.
 

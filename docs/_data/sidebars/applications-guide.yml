@@ -22,24 +22,16 @@ entries:
 
           - title: Подготовка к работе
             url: /documentation/guides/applications-guide/gitlab-rails/010-preparing.html
-            sfi:
-              - title: Подготовка приложения
-                hash: "#preparing-app"
-              - title: Подготовка среды
-                hash: "#preparing-env"
 
           - title: Базовые настройки
-            url: /documentation/guides/applications-guide/gitlab-rails/020-basic.html
+            url: "/documentation/guides/applications-guide/gitlab-rails/020-basic.html"
             sfi:
-              - title: Локальная сборка
-                hash: "#hello-world-local"
+              - title: Сборка
+                url: "/documentation/guides/applications-guide/gitlab-rails/020-basic.html#building"
+              - title: Конфигурирование инфраструктуры в виде кода
+                url: "/documentation/guides/applications-guide/gitlab-rails/020-basic.html#config-iac"
               - title: Построение CI-процесса
-                hash: "#hello-world-ci"
-                sfi:
-                - title: Сборка в Gitlab CI
-                  hash: "#hello-world-ci-build"
-                - title: Деплой в Kubernetes
-                  hash: "#hello-world-ci-deploy"
+                url: "/documentation/guides/applications-guide/gitlab-rails/020-basic.html#ci"
 
           - title: Подключаем зависимости
             url: /documentation/guides/applications-guide/gitlab-rails/030-dependencies.html
